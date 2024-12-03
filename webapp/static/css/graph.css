@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+    }
+
+body {
+    padding: 40px;
+}
+
+.graph {
+    --value1: var(--data1, 0);
+    --value2: var(--data2, 0);
+    --value3: var(--data3, 0);
+    --value4: var(--data4, 0);
+    --result2: calc(var(--value1) + var(--value2));
+    --result3: calc(var(--result2) + var(--value3));
+    --result4: calc(var(--result3) + var(--value4));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30vw;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid sandybrown;
+    background: conic-gradient(
+        red var(--value1),
+        orange var(--value1) var(--result2),
+        pink var(--result2) var(--result3),
+        brown var(--result3) 100%
+    );
+}
+
+.graph[data-empty]::after {
+    content: attr(data-empty);
+    font-size: 18px;
+    color: gray;
+}
+
+.graph.donut::before {
+    content: "";    
+    position: absolute;
+    width: var(--width);
+    height: 50%;
+    background-color: #fff;
+    border-radius: 50%;
+}
